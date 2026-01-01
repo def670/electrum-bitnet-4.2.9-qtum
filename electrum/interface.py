@@ -767,10 +767,7 @@ class Interface(Logger):
             util.trigger_callback('network_updated')
             await self.network.switch_unwanted_fork_interface()
             await self.network.switch_lagging_interface()
-            # new json connect for topology mapping
-            url = 'https://bitnet-io.org/connect.json'
-            data = requests.get(url).json
-
+            pass
            
   
 

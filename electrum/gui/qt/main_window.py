@@ -80,7 +80,10 @@ from electrum.simple_config import SimpleConfig
 from electrum.logging import Logger
 from electrum.lnutil import ln_dummy_address, extract_nodeid, ConnStringFormatError
 from electrum.lnaddr import lndecode, LnDecodeException
-from electrum.plugins.trezor.trezor import TrezorKeyStore
+try:
+    from electrum.plugins.trezor.trezor import TrezorKeyStore
+except Exception:
+    TrezorKeyStore = None
 
 from .exception_window import Exception_Hook
 from .amountedit import AmountEdit, BTCAmountEdit, FreezableLineEdit, FeerateEdit
@@ -772,7 +775,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             addr_type, __ = b58_address_to_hash160(self.addresses[0])
         except:
             addr_type = constants.net.SEGWIT_HRP
-        if not isinstance(self.wallet.keystore, TrezorKeyStore) and addr_type == constants.net.ADDRTYPE_P2PKH and not self.wallet.is_watching_only():
+        if not (TrezorKeyStore and isinstance(self.wallet.keystore, TrezorKeyStore)) and addr_type == constants.net.ADDRTYPE_P2PKH and not self.wallet.is_watching_only():
             token_menu = wallet_menu.addMenu(_("&Token"))
             token_menu.addAction(_("Add Token"), lambda: self.token_add_dialog())
 
@@ -3550,7 +3553,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         return splitter
 
     def token_add_dialog(self):
-        if isinstance(self.wallet.keystore, TrezorKeyStore):
+        if (TrezorKeyStore and isinstance(self.wallet.keystore, TrezorKeyStore)):
             self.show_message('Trezor does not support QRC20 Token for now')
             return
         d = TokenAddDialog(self)
@@ -3611,7 +3614,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         return self.create_list_tab(l)
 
     def delegation_dialog(self, dele: 'Delegation' = None, mode='add'):
-        if isinstance(self.wallet.keystore, TrezorKeyStore):
+        if (TrezorKeyStore and isinstance(self.wallet.keystore, TrezorKeyStore)):
             self.show_message('Trezor does not support staking delegation for now')
             return
 
