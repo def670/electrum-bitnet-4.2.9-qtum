@@ -27,8 +27,8 @@ for python3.10
 
 # requires older python3 aiorpcx == 0.18.7 and libsecp256k1.so.0 or wont work
 ```
-git clone https://github.com/bitnet-io/electrum-bitnet-4.2.8
-cd electrum-bitnet-4.2.8
+git clone https://github.com/def670/electrum-bitnet-4.2.9-qtum
+cd electrum-bitnet-4.2.9-qtum
 python3 -m pip install .
 python3 -m pip install aiorpcx==0.18.7 cryptography requests PyQt5 protobuf==3.20.0
 
@@ -38,8 +38,8 @@ python3 run_electrum
 
 # build for windows setup.exe, portable.exe (wine builder) requires docker
 ```
-git clone https://github.com/bitnet-io/electrum-bitnet-4.2.8
-cd electrum-bitnet-4.2.8
+git clone https://github.com/def670/electrum-bitnet-4.2.9-qtum
+cd electrum-bitnet-4.2.9-qtum
 
 cd contrib/build-wine
 docker build -t electrum-wine-builder-img .
@@ -52,8 +52,8 @@ cd /opt/wine64/drive_c/electrum
 # Linux AppImage (requires docker)
 ```
 
-git clone https://github.com/bitnet-io/electrum-bitnet-4.2.8
-cd electrum-bitnet-4.2.8
+git clone https://github.com/def670/electrum-bitnet-4.2.9-qtum
+cd electrum-bitnet-4.2.9-qtum
 
 cd contrib/build-linux-appimage
 docker build -t electrum-appimage-builder-img .
@@ -66,8 +66,8 @@ cd ../../../
 # building for android (requires docker + java11 + nodejs + apksigner to sign the debug.apk)
 
 ```
-git clone https://github.com/bitnet-io/electrum-bitnet-4.2.8
-cd electrum-bitnet-4.2.8
+git clone https://github.com/def670/electrum-bitnet-4.2.9-qtum
+cd electrum-bitnet-4.2.9-qtum
 
 sh android-builder-docker.sh
 
@@ -115,8 +115,8 @@ Bitnet-4.2.8.0-arm64-v8a-signed.apk
 # macOS python3.10 , xcode command line tools)
 
 ```
-git clone https://github.com/bitnet-io/electrum-bitnet-4.2.8
-cd electrum-bitnet-4.2.8
+git clone https://github.com/def670/electrum-bitnet-4.2.9-qtum
+cd electrum-bitnet-4.2.9-qtum
 
 cd electrum-bitnet
 python3 -m pip install --upgrade pip
@@ -136,7 +136,7 @@ macos dmg builder (requires intel macOS (arm64 hybrid fails...suggest BigSur)
 ```./run_electrum -g text```
 ```./Electrum-AppImage_x86_64 -g text```
 
-![s1](https://github.com/bitnet-io/electrum-bitnet-4.2.8/releases/download/4.2.8/run_electrum-g-text.gif)
+![s1](https://github.com/def670/electrum-bitnet-4.2.9-qtum/releases/download/4.2.8/run_electrum-g-text.gif)
 
 
 
